@@ -24,8 +24,18 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_env.get_template("templates/base_page.html")
         values = {"title": "Hello, world!"}
         self.response.out.write(template.render(values))
+
+class FileHandler(webapp2.RequestHandler):
+    def get(self):
+        # A basic template could just send text out the response stream, but we use Jinja
+        # self.response.write("Hello world!")
+        
+        template = jinja_env.get_template("templates/files.html")
+        values = {"title": "Hello, world!"}
+        self.response.out.write(template.render(values))
     
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/files', FileHandler)
 ], debug=True)
