@@ -1,6 +1,7 @@
 
 from google.appengine.api import users
 import webapp2
+from google.appengine.ext.webapp import blobstore_handlers
 
 import main
 import utils
@@ -8,7 +9,7 @@ import utils
 # Potentially helpful (or not) superclass for *logged in* pages and actions (assumes app.yaml gaurds for login)
 
 ### Pages ###
-class BasePage(webapp2.RequestHandler):
+class BasePage(blobstore_handlers.BlobstoreUploadHandler):
   """Page handlers should inherit from this one."""
   def get(self):
     user = users.get_current_user()
