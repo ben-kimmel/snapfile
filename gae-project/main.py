@@ -2,6 +2,7 @@ import os
 
 import jinja2
 import webapp2
+from handlers import login_handler
 
 # Jinja environment instance necessary to use Jinja templates.
 def __init_jinja_env():
@@ -15,16 +16,6 @@ def __init_jinja_env():
 
 jinja_env = __init_jinja_env()
 
-
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        # A basic template could just send text out the response stream, but we use Jinja
-        # self.response.write("Hello world!")
-        
-        template = jinja_env.get_template("templates/base_page.html")
-        values = {"title": "Hello, world!"}
-        self.response.out.write(template.render(values))
-
 class FileHandler(webapp2.RequestHandler):
     def get(self):
         # A basic template could just send text out the response stream, but we use Jinja
@@ -36,6 +27,6 @@ class FileHandler(webapp2.RequestHandler):
     
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', login_handler.LoginHandler),
     ('/files', FileHandler)
 ], debug=True)

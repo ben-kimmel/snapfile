@@ -13,9 +13,11 @@ class User(ndb.Model):
     
 class File(ndb.Model):
     name = ndb.StringProperty()
-    file = ndb.BlobProperty()
+    filename = ndb.StringProperty()
+    key = ndb.BlobKeyProperty()
     owner_key = ndb.KeyProperty(kind=User)
     size = ndb.StringProperty()
+    public = ndb.BooleanProperty(default=False)
     
 class DirectShare(ndb.Model):
     available_until = ndb.DateTimeProperty()

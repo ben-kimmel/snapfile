@@ -15,9 +15,7 @@ class BasePage(webapp2.RequestHandler):
     email = user.email().lower()
     if not user:
       raise Exception("Missing user!")
-    account_info = utils.get_account_info_for_email(email, create_if_none=True)
     values = {"user_email": email,
-              "account_info": account_info,
               "logout_url": users.create_logout_url("/")}
     self.update_values(user, values)
     template = main.jinja_env.get_template(self.get_template())
