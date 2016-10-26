@@ -1,0 +1,42 @@
+{% extends "templates/base_page.html" %} {% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+				<span class="sr-only">Toggle navigation</span><span
+				class="icon-bar"></span><span class="icon-bar"></span><span
+				class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Snapfile</a>
+		</div>
+
+		<div class="collapse navbar-collapse"
+		id="bs-example-navbar-collapse-2">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="{{ login_url }}" class="login-button">Login with Google</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1 style="padding-bottom: 50px">Snapfile</h1>
+		<img
+		src="static/img/icon.png"
+		style="height: 200px">
+		<p style="padding-top: 50px; padding-bottom: 25px">
+			Share your
+			files on your own schedule.
+		</p>
+		<p>
+			<a href="{{ login_url }}" class="btn btn-primary btn-lg register-button">Login with Google</a>
+		</p>
+	</div>
+</div>
+
+{% endblock %}
