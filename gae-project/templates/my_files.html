@@ -18,49 +18,17 @@ style="padding: 10px">
 			</tr>
 		</thead>
 		<tbody>
+			{% for file in my_files %}
 			<tr>
-				<td>File 1</td>
-				<td>35 MB</td>
-				<td>0</td>
-				<td>0</td>
-				<td>No</td>
+				<td><a href="/view/{{file.key}}">{{ file.name }}</a></td>
+				<td>{{ file.size }}</td>
+				<td>{{ file.views }}</td>
+				<td>{{ file.downloads }}</td>
+				<td>{{ file.public }}</td>
 				<td>None</td>
-				<td>
-					<a href="#" data-toggle="modal"	data-target="#share-file-modal">
-						<i class="fa fa-share-alt" aria-hidden="true" style="margin-right: 15px;"></i>
-					</a>
-					<a href="#"data-toggle="modal" data-target="#delete-file-modal">
-						<i class="fa fa-trash" aria-hidden="true"></i>
-					</a>
-				</td>
+				<td><a href="#" data-toggle="modal"	data-target="#share-file-modal"> <i class="fa fa-share-alt" aria-hidden="true" style="margin-right: 15px;"></i> </a><a href="#"data-toggle="modal" data-target="#delete-file-modal"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
 			</tr>
-			<tr>
-				<td>File 2</td>
-				<td>456 KB</td>
-				<td>5</td>
-				<td>1</td>
-				<td>Yes</td>
-				<td>Test User</td>
-				<td><a href="#" data-toggle="modal"
-				data-target="#share-file-modal"><i class="fa fa-share-alt"
-				aria-hidden="true" style="margin-right: 15px;"></a></i><a href="#"
-				data-toggle="modal" data-target="#delete-file-modal"><i
-				class="fa fa-trash" aria-hidden="true"></i></a></td>
-			</tr>
-			<tr>
-				<td>File 3</td>
-				<td>1.2 GB</td>
-				<td>45</td>
-				<td>5</td>
-				<td>Yes</td>
-				<td>User 1, User 2, and 5 others...</td>
-				<td><a href="#" data-toggle="modal"
-				data-target="#share-file-modal"><i class="fa fa-share-alt"
-				aria-hidden="true" style="margin-right: 15px;"></a></i><a href="#"
-				data-toggle="modal" data-target="#delete-file-modal"><i
-				class="fa fa-trash" aria-hidden="true"></i></a></td>
-			</tr>
-
+			{% endfor %}
 		</tbody>
 	</table>
 </div>

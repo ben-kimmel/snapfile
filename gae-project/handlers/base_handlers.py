@@ -5,19 +5,19 @@ from google.appengine.ext.webapp import blobstore_handlers
 
 import main
 import utils
+import logging
+import os
+import cloudstorage as gcs
+from google.appengine.api import app_identity
 
 # Potentially helpful (or not) superclass for *logged in* pages and actions (assumes app.yaml gaurds for login)
 
 ### Pages ###
-class BasePage(blobstore_handlers.BlobstoreUploadHandler):
+class BasePage(webapp2.RequestHandler):
   """Page handlers should inherit from this one."""
   def get(self):
     user = users.get_current_user()
-    email = user.email().lower()
-    if not user:
-      raise Exception("Missing user!")
-    values = {"user_email": email,
-              "logout_url": users.create_logout_url("/")}
+    values = {}
     self.update_values(user, values)
     template = main.jinja_env.get_template(self.get_template())
     self.response.out.write(template.render(values))
@@ -36,15 +36,15 @@ class BasePage(blobstore_handlers.BlobstoreUploadHandler):
 
 ### Actions ###
 
-class BaseAction(webapp2.RequestHandler):
+class BaseAction(blobstore_handlers.BlobstoreUploadHandler):
   """ALL action handlers should inherit from this one."""
   def post(self):
+
     user = users.get_current_user()
     email = user.email().lower()
     if not user:
       raise Exception("Missing user!")
-    account_info = utils.get_account_info_for_email(email)
-    self.handle_post(user, account_info)
+    self.handle_post(user, email)
 
 
   def get(self):
