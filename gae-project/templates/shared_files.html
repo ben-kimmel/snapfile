@@ -9,20 +9,15 @@
 			</tr>
 		</thead>
 		<tbody>
+			{% for shared_file in shared_files %}
 			<tr>
-				<td>File 1</td>
-				<td>54 MB</td>
+				<td>{{ shared_file.name }}</td>
+				<td>{{ shared_file.size }}</td>
 				<td>Test User</td>
-				<td><a href="#"><i class="fa fa-download"
+				<td><a href="/view/{{ shared_file.blob_key }}"><i class="fa fa-download"
 				aria-hidden="true"></i></a></td>
 			</tr>
-			<tr>
-				<td>File 2</td>
-				<td>894 MB</td>
-				<td>Test User 2</td>
-				<td><a href="#"><i class="fa fa-download"
-				aria-hidden="true"></i></a></td>
-			</tr>
+			{% endfor %}
 
 		</tbody>
 	</table>

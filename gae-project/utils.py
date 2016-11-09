@@ -1,5 +1,5 @@
 import logging
-from models import File
+from models import File, DirectShare
 from google.appengine.ext import ndb
 
 
@@ -18,3 +18,13 @@ def get_query_for_all_files_for_email(email):
     """ Returns a query for all OBJECTS for this user. """
     parent_key = get_parent_key_for_email(email)
     return File.query(ancestor=parent_key)
+
+def get_shared_files_for_email(email):
+    shares = DirectShare.query(DirectShare.email == email)
+    files = []
+    for r in shares:
+        bk = r.file
+        f = File.query(File.blob_key == bk)
+        for f2 in f:
+            files.append(f2)
+    return files

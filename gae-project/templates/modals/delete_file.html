@@ -8,15 +8,14 @@
 				</button>
 				<h4 class="modal-title">Delete File?</h4>
 			</div>
-			<div class="modal-body text-center">
-				<input id="confirm" type="checkbox">
-				<label for="confirm">Delete from shared libraries?</label>
-			</div>
-			<div class="modal-footer form-group">
-				<button class="btn btn-primary" data-dismiss="modal">
-					Cancel
-				</button>
-				<a class="btn btn-danger" href="/files">Delete</a>
+			<div class="modal-body form-group">
+				<form action="/delete" method="post">
+					<input id="delete_file_key" name="fileKey" type="text" class="hidden" />
+					<button class="btn btn-primary" data-dismiss="modal">
+						Cancel
+					</button>
+					<input type="submit" class="btn btn-danger" href="/files" />
+				</form>
 			</div>
 		</div>
 	</div>

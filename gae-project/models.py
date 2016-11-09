@@ -10,8 +10,9 @@ from google.appengine.ext.db import BlobProperty
 
 class File(ndb.Model):
     name = ndb.StringProperty()
+    owner = ndb.StringProperty()
     file_name = ndb.StringProperty()
-    key = ndb.BlobKeyProperty()
+    blob_key = ndb.BlobKeyProperty()
     size = ndb.StringProperty()
     public = ndb.BooleanProperty(default=False)
     views = ndb.IntegerProperty(default=0)
@@ -21,7 +22,7 @@ class File(ndb.Model):
 class DirectShare(ndb.Model):
     available_from = ndb.DateTimeProperty()
     available_until = ndb.DateTimeProperty()
-    file = ndb.KeyProperty(kind=File)
+    file = ndb.BlobKeyProperty()
     email = ndb.StringProperty()
 
 

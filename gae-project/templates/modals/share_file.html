@@ -36,14 +36,18 @@
 							<input name="end" type="datetime-local" class="form-control" id="datetime-2" placeholder="Date and Time" required>
 						</div>
 					</div>
-					<input name="file_key" type="text" class="hidden" />
+					<div class="form-group">
+						<label for="duration" class="col-lg-2 control-label">Make public?</label>
+						<div class="col-lg-10">
+							<input name="public" type="checkbox" class="form-control" id="public">
+						</div>
+					</div>
+					<input id="share_file_key" name="file_key" type="text" class="hidden" />
+					<button class="btn btn-danger" data-dismiss="modal">
+						Cancel
+					</button>
+					<input type="submit" class="btn btn-success" href="/files"/>
 				</form>
-			</div>
-			<div class="modal-footer form-group">
-				<button class="btn btn-danger" data-dismiss="modal">
-					Cancel
-				</button>
-				<a class="btn btn-success" href="/files">Share</a>
 			</div>
 		</div>
 	</div>

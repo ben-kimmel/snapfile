@@ -20,13 +20,20 @@ style="padding: 10px">
 		<tbody>
 			{% for file in my_files %}
 			<tr>
-				<td><a href="/view/{{file.key}}">{{ file.name }}</a></td>
+				<td><a href="/view/{{ file.blob_key }}">{{ file.name }}</a></td>
 				<td>{{ file.size }}</td>
 				<td>{{ file.views }}</td>
 				<td>{{ file.downloads }}</td>
 				<td>{{ file.public }}</td>
 				<td>None</td>
-				<td><a href="#" data-toggle="modal"	data-target="#share-file-modal"> <i class="fa fa-share-alt" aria-hidden="true" style="margin-right: 15px;"></i> </a><a href="#"data-toggle="modal" data-target="#delete-file-modal"> <i class="fa fa-trash" aria-hidden="true"></i> </a></td>
+				<td>
+					<a href="#" data-toggle="modal"	data-target="#share-file-modal" data-id="{{ file.blob_key }}" class="share-modal-open"> 
+						<i class="fa fa-share-alt" aria-hidden="true" style="margin-right: 15px;"></i> 
+					</a>
+					<a href="#"data-toggle="modal" data-target="#delete-file-modal" data-id="{{ file.blob_key }}" class="del-modal-open"> 
+						<i class="fa fa-trash" aria-hidden="true"></i> 
+					</a>
+				</td>
 			</tr>
 			{% endfor %}
 		</tbody>
